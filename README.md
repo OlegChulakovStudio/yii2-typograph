@@ -37,21 +37,6 @@ return [
 
 В компоненте указан класс типографа по умолчанию <a href="https://github.com/OlegChulakovStudio/ch-php-typograph/blob/main/src/TypographFacade.php">TypographFacade</a>
 
-Есть возможность переопределить типограф внутри компонента. Типограф должен быть реализацией интерфейса TypografInterface из пакета <a href="https://github.com/OlegChulakovStudio/ch-php-typograph">chulakov/ch-php-typograph</a>, как и сам компонент
-
-
-```php
-return [
-	'components' => [
-		...
-		'typograph' => [
-		    'class' => 'Chulakov\Typograph\TypographComponent',
-		    'typographClass' => 'Chulakov\Typograph\TypographFacade',
-		],
-	]
-];
-```
-
 Есть возможность переопределить правила типографа внутри компонента. Для этого в свойства компонента additionalRulesPath и changedRulesPath кладутся 
 пути файлов с новыми правилами типографа и/или с изменениями старых правил. Приведены примерные пути файлов.
 
