@@ -22,15 +22,6 @@ composer require chulakov/yii2-typograph
 ### Способ подключения компонента
 <hr>
 
-Подключение компонента реализовано через внедрение зависимостей<br>
-В реализации интерфейса BootstrapInterface прописывается код: 
-
-```php
-\Yii::$container->setSingleton('Chulakov\PhpTypograph\TypografInterface', function() use ($app) {
-    return $app->get('typograph');
-});
-```
-
 В файле common/config/main добавляется компонент. Компонент должен реализовывать интерфейс TypografInterface из пакета <a href="https://github.com/OlegChulakovStudio/ch-php-typograph">chulakov/ch-php-typograph</a>:
 
 ```php
@@ -45,21 +36,6 @@ return [
 ```
 
 В компоненте указан класс типографа по умолчанию <a href="https://github.com/OlegChulakovStudio/ch-php-typograph/blob/main/src/TypographFacade.php">TypographFacade</a>
-
-Есть возможность переопределить типограф внутри компонента. Типограф должен быть реализацией интерфейса TypografInterface из пакета <a href="https://github.com/OlegChulakovStudio/ch-php-typograph">chulakov/ch-php-typograph</a>, как и сам компонент
-
-
-```php
-return [
-	'components' => [
-		...
-		'typograph' => [
-		    'class' => 'Chulakov\Typograph\TypographComponent',
-		    'typographClass' => 'Chulakov\Typograph\TypographFacade',
-		],
-	]
-];
-```
 
 Есть возможность переопределить правила типографа внутри компонента. Для этого в свойства компонента additionalRulesPath и changedRulesPath кладутся 
 пути файлов с новыми правилами типографа и/или с изменениями старых правил. Приведены примерные пути файлов.
@@ -120,4 +96,14 @@ public function behaviors()
 		],
 	];
 }
+```
+
+Необходимо, чтобы в конструктор поведения прокидывалась реализация интерфейса <a href="https://github.com/OlegChulakovStudio/ch-php-typograph">TypografInterface</a><br>
+В Yii2 есть способ передачи компонента типографа, реализующего интерфейс TypografInterface, через внедрение зависимостей<br>
+Такое можно осуществить, прописав в реализации интерфейса BootstrapInterface код: 
+
+```php
+\Yii::$container->setSingleton('Chulakov\PhpTypograph\TypografInterface', function() use ($app) {
+    return $app->get('typograph');
+});
 ```
