@@ -2,7 +2,6 @@
   "name": "chulakov/yii2-typograph",
   "description": "Typograph component for Yii2",
   "type": "typograph-component",
-  "version": "1.0.0",
   "license": "BSD-3-Clause",
   "require": {
     "php": "^7.1.0",
