@@ -5,7 +5,6 @@ namespace Chulakov\Typograph;
 use Yii;
 use yii\base\Component;
 use Chulakov\PhpTypograph\TypografInterface;
-use yii\base\InvalidArgumentException;
 use yii\base\InvalidConfigException;
 use yii\di\Instance;
 
@@ -27,7 +26,7 @@ class TypographComponent extends Component implements TypografInterface
      * @var string
      * Класс типографа
      */
-    public $typographClass = 'Chulakov\PhpTypograph\TypographFacade';
+    protected $typographClass = 'Chulakov\PhpTypograph\TypographFacade';
 
     /**
      * @var TypografInterface
@@ -44,10 +43,6 @@ class TypographComponent extends Component implements TypografInterface
      */
     public function init()
     {
-        if (is_subclass_of($this->typographClass, 'TypografInterface')) {
-            throw new InvalidArgumentException('Typograph should be a realization of TypografInterface');
-        }
-
         $additionalRules = $this->loadConfigRules($this->additionalRulesPath);
         $changedRules = $this->loadConfigRules($this->changedRulesPath);
 
