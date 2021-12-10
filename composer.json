@@ -6,7 +6,7 @@
   "require": {
     "php": "^7.1.0",
     "oleg-chulakov-studio/yii2-base": "^1.0",
-    "chulakov/ch-php-typograph": "1.0.5"
+    "chulakov/ch-php-typograph": "^1.0"
   },
   "minimum-stability": "stable",
   "authors": [
