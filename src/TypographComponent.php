@@ -73,7 +73,7 @@ class TypographComponent extends Component implements TypografInterface
     private function loadConfigRules($configPath)
     {
         $configPath = Yii::getAlias($configPath);
-        if (is_file($configPath)) {
+        if ($configPath && is_file($configPath)) {
             $data = include $configPath;
             if (!empty($data) && is_array($data)) {
                 return $data;
